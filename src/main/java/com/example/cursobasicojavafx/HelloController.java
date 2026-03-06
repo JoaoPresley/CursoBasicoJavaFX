@@ -7,6 +7,9 @@ import javafx.scene.control.*;
 public class HelloController {
 
     @FXML
+    private ToggleGroup Sexo;
+
+    @FXML
     private Button bt_deletar;
 
     @FXML
@@ -45,13 +48,20 @@ public class HelloController {
     @FXML
     void showname(ActionEvent event) {
         String nome = tf_nome.getText().toString();
+        String sexo = "Não selecionado";
+        RadioButton selecionado = (RadioButton) Sexo.getSelectedToggle();
+
+        if (selecionado != null){
+            sexo = selecionado.getText();
+        }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
         alert.setTitle("Testando o sistema");
-        alert.setHeaderText("Parabéns funcionou!!");
+        alert.setHeaderText("Dados coletados");
 
-        alert.setContentText(nome);
+        alert.setContentText("Nome: " + nome + "\nIdade: " + tc_idade.getText().toString()+
+                "\nSexo: "+ sexo);
 
         alert.show();
     }
