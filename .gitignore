@@ -1,38 +1,37 @@
+### --- ESSENCIAIS DO PROJETO (Maven/Java) ---
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+build/
+*.class
+*.log
+*.jar
+*.war
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+### --- IDEs (O que ninguém quer no Git) ---
+# IntelliJ
+.idea/
 *.iws
 *.iml
 *.ipr
-
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+out/
+# VS Code, Eclipse e NetBeans
 .vscode/
+.classpath
+.project
+.settings/
+.apt_generated
+.factorypath
+/nbproject/private/
 
-### Mac OS ###
+### --- SISTEMA OPERACIONAL ---
 .DS_Store
+Thumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+### --- EXCEÇÕES (Arquivos da IDE que às vezes são úteis) ---
+# Se você trabalha sozinho, pode ignorar tudo da pasta .idea/. 
+# Se trabalha em time, as linhas abaixo garantem que configurações 
+# compartilhadas (como estilo de código) subam, mas lixo pessoal não.
+!.idea/runConfigurations/
+!.idea/codeStyles/
