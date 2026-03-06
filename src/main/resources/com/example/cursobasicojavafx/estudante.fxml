@@ -79,7 +79,7 @@
                <Insets left="200.0" />
             </GridPane.margin>
          </RadioButton>
-         <Button fx:id="bt_salvar" mnemonicParsing="false" text="Salvar" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <Button fx:id="bt_salvar" mnemonicParsing="false" onAction="#showname" text="Salvar" GridPane.columnIndex="1" GridPane.rowIndex="3">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>

@@ -1,11 +1,8 @@
 package com.example.cursobasicojavafx;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class HelloController {
 
@@ -44,5 +41,19 @@ public class HelloController {
 
     @FXML
     private TableView<?> tv_estudante;
+
+    @FXML
+    void showname(ActionEvent event) {
+        String nome = tf_nome.getText().toString();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Testando o sistema");
+        alert.setHeaderText("Parabéns funcionou!!");
+
+        alert.setContentText(nome);
+
+        alert.show();
+    }
 
 }
