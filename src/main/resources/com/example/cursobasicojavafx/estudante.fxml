@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -70,8 +71,12 @@
             </opaqueInsets>
          </TextField>
          <TextField fx:id="tf_idade" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         <RadioButton fx:id="rb_M" mnemonicParsing="false" text="Masculino" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-         <RadioButton fx:id="rb_F" mnemonicParsing="false" text="Feminino" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <RadioButton fx:id="rb_M" mnemonicParsing="false" text="Masculino" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <toggleGroup>
+               <ToggleGroup fx:id="Sexo" />
+            </toggleGroup>
+         </RadioButton>
+         <RadioButton fx:id="rb_F" mnemonicParsing="false" text="Feminino" toggleGroup="$Sexo" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <opaqueInsets>
                <Insets left="50.0" />
             </opaqueInsets>
