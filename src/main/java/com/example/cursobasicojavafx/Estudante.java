@@ -1,5 +1,7 @@
 package com.example.cursobasicojavafx;
 
+import java.io.Reader;
+
 public class Estudante {
         private Long id;
         private int idade;
