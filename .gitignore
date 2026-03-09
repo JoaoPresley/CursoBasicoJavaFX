@@ -37,4 +37,5 @@ $RECYCLE.BIN/
 !.idea/codeStyles/
 
 ##---Arquivos utilizados para testar o sistema
-./src/main/java/teste.java
+## Qualquer arquivo com o nomes teste ou pasta escrita teste será ignorada
+*teste*
