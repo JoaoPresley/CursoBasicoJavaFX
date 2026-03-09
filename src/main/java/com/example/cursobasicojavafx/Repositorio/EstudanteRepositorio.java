@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface EstudanteRepositorio {
 
-    public void porId();
+    public Estudante porId(long id);
+
     public List <Estudante> buscarTodos();
 
     void inserir(Estudante estudante);

@@ -13,8 +13,29 @@ import java.util.List;
 public class estudanteDAO implements EstudanteRepositorio {
 
     @Override
-    public void porId() {
+    public Estudante porId(long id) {
+        Estudante estudante = new Estudante();
+        try {
+            //Query para encontrar o estudante de id = ?
+            String sql = "SELECT * FROM estudante WHERE id=?";
+            PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql);
+            ps.setLong(1, id); //Define o id buscado
+            ResultSet rs = ps.executeQuery();//Resultado do Estudante com o id
 
+            //Insere o resultado da query no objeto estudante
+            if(rs.next()) {
+                estudante.setIdade(rs.getInt("idade"));
+                estudante.setNome(rs.getString("nome"));
+                estudante.setSexo(rs.getString("sexo"));
+                estudante.setId(rs.getLong("id"));
+            }
+
+        }catch (Exception e){
+            System.out.print("Erro na requisição SQL: ");
+            throw new RuntimeException(e);
+        }
+
+        return estudante;
     }
 
     @Override
