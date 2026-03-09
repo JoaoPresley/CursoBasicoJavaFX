@@ -8,7 +8,6 @@ public interface EstudanteRepositorio {
 
     public void porId();
     public List <Estudante> buscarTodos();
-    public void inserir();
 
     void inserir(Estudante estudante);
 

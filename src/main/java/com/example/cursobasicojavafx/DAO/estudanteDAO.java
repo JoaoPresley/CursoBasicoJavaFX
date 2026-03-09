@@ -21,11 +21,6 @@ public class estudanteDAO implements EstudanteRepositorio {
     }
 
     @Override
-    public void inserir() {
-
-    }
-
-    @Override
     public void inserir(Estudante estudante) {
 
         try {
