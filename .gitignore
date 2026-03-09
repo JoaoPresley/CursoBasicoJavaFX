@@ -35,3 +35,6 @@ $RECYCLE.BIN/
 # compartilhadas (como estilo de código) subam, mas lixo pessoal não.
 !.idea/runConfigurations/
 !.idea/codeStyles/
+
+##---Arquivos utilizados para testar o sistema
+./src/main/java/teste.java
