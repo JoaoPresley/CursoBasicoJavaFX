@@ -5,7 +5,9 @@ import com.example.cursobasicojavafx.Estudante;
 import com.example.cursobasicojavafx.Repositorio.EstudanteRepositorio;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class estudanteDAO implements EstudanteRepositorio {
@@ -17,7 +19,27 @@ public class estudanteDAO implements EstudanteRepositorio {
 
     @Override
     public List<Estudante> buscarTodos() {
-        return List.of();
+        List <Estudante> estudantes = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM estudante";
+            ResultSet rs = null;
+            PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()){
+                Estudante estudante = new Estudante();
+                estudante.setId(rs.getLong("id"));
+                estudante.setSexo(rs.getString("sexo"));
+                estudante.setNome(rs.getString("nome"));
+                estudante.setIdade(rs.getInt("idade"));
+
+                estudantes.add(estudante);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return estudantes;
     }
 
     @Override
