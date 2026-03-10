@@ -12,5 +12,5 @@ public interface EstudanteRepositorio {
 
     void inserir(Estudante estudante);
 
-    public void apagar();
+    public void apagar(Long id);
 }

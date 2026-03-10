@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="com.example.cursobasicojavafx.HelloController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cursobasicojavafx.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -84,7 +84,7 @@
                <Insets left="200.0" />
             </GridPane.margin>
          </RadioButton>
-         <Button fx:id="bt_salvar" mnemonicParsing="false" onAction="#showname" text="Salvar" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <Button fx:id="bt_salvar" mnemonicParsing="false" onAction="#Salvar" text="Salvar" GridPane.columnIndex="1" GridPane.rowIndex="3">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>

@@ -82,7 +82,16 @@ public class estudanteDAO implements EstudanteRepositorio {
     }
 
     @Override
-    public void apagar() {
+    public void apagar(Long id) {
+        try {
+            String sql = "DELETE FROM estudante \n" +
+                    "WHERE id = ?";
+            PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql);
+            ps.setLong(1, id);
+            ps.execute();
 
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 }

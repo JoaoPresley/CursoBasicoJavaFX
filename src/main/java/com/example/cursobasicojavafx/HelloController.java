@@ -1,5 +1,6 @@
 package com.example.cursobasicojavafx;
 
+import com.example.cursobasicojavafx.DAO.estudanteDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -46,24 +47,39 @@ public class HelloController {
     private TableView<?> tv_estudante;
 
     @FXML
-    void showname(ActionEvent event) {
-        String nome = tf_nome.getText().toString();
-        String sexo = "Não selecionado";
-        RadioButton selecionado = (RadioButton) Sexo.getSelectedToggle();
+    void Salvar(ActionEvent event) {
+        try {
+            //Se não for preenchido todos os dados
+            if (tf_nome.getText().isBlank() ||
+                tf_idade.getText().isBlank() ||
+                Sexo.getSelectedToggle() == null){
+                exibirerro("Informações incompletas","Preencha a idade, nome e selecione o sexo para salvar");
+                return; //PARE!!
+            }
+            //Se tiver tudo preenchido continua o código
 
-        if (selecionado != null){
-            sexo = selecionado.getText();
+            //objeto que recebe os dados do estudante
+            Estudante estudante = new Estudante();
+            estudante.setNome(tf_nome.getText());
+            estudante.setIdade(Integer.parseInt(tf_idade.getText()));
+            RadioButton rb = (RadioButton) Sexo.getSelectedToggle();
+            estudante.setSexo(rb.getText());
+
+            //insere no BD
+            estudanteDAO DAO = new estudanteDAO();
+            DAO.inserir(estudante);
+
+        }catch (NumberFormatException e){
+            exibirerro("Numero errado!", "Digite um numero válido");
+        }catch (Exception e){
+            exibirerro("Erro", "Ocorreu um erro ao salvar: " + e.getMessage());
         }
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-        alert.setTitle("Testando o sistema");
-        alert.setHeaderText("Dados coletados");
-
-        alert.setContentText("Nome: " + nome + "\nIdade: " + tc_idade.getText().toString()+
-                "\nSexo: "+ sexo);
-
-        alert.show();
     }
-
+    public void exibirerro(String titulo, String mensagem){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
+    }
 }
