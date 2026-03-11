@@ -92,12 +92,12 @@
                <Insets left="50.0" />
             </GridPane.margin>
          </Button>
-         <Button fx:id="bt_deletar" mnemonicParsing="false" text="Deletar" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <Button fx:id="bt_deletar" mnemonicParsing="false" onAction="#Deletar" text="Deletar" GridPane.columnIndex="1" GridPane.rowIndex="3">
             <GridPane.margin>
                <Insets left="250.0" />
             </GridPane.margin>
          </Button>
-         <Button fx:id="bt_editar" mnemonicParsing="false" text="Editar" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <Button fx:id="bt_editar" mnemonicParsing="false" onAction="#Editar" text="Editar" GridPane.columnIndex="1" GridPane.rowIndex="3">
             <GridPane.margin>
                <Insets left="150.0" />
             </GridPane.margin>

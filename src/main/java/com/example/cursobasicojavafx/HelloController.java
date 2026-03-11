@@ -53,7 +53,16 @@ public class HelloController implements Initializable {
     @FXML
     private TableView<Estudante> tv_estudante;
     //FUNÇÕES FXML
+    //Função ao clicar no botão deletar
+    @FXML
+    void Deletar(ActionEvent event) {
 
+    }
+    //Função ao clicar no botão editar
+    @FXML
+    void Editar(ActionEvent event) {
+
+    }
     //Função ao clicar do botão salvar
     @FXML
     void Salvar(ActionEvent event) {
