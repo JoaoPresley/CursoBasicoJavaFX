@@ -1,11 +1,18 @@
 package com.example.cursobasicojavafx;
 
 import com.example.cursobasicojavafx.DAO.estudanteDAO;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
-public class HelloController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class HelloController implements Initializable {
 
     @FXML
     private ToggleGroup Sexo;
@@ -18,7 +25,7 @@ public class HelloController {
 
     @FXML
     private Button bt_salvar;
-
+    //Definição dos interativos
     @FXML
     private RadioButton rb_F;
 
@@ -26,16 +33,16 @@ public class HelloController {
     private RadioButton rb_M;
 
     @FXML
-    private TableColumn<?, ?> tc_id;
+    private TableColumn<Estudante, Long> tc_id;
 
     @FXML
-    private TableColumn<?, ?> tc_idade;
+    private TableColumn<Estudante, Integer> tc_idade;
 
     @FXML
-    private TableColumn<?, ?> tc_nome;
+    private TableColumn<Estudante, String> tc_nome;
 
     @FXML
-    private TableColumn<?, ?> tc_sexo;
+    private TableColumn<Estudante, String> tc_sexo;
 
     @FXML
     private TextField tf_idade;
@@ -44,8 +51,10 @@ public class HelloController {
     private TextField tf_nome;
 
     @FXML
-    private TableView<?> tv_estudante;
+    private TableView<Estudante> tv_estudante;
+    //FUNÇÕES FXML
 
+    //Função ao clicar do botão salvar
     @FXML
     void Salvar(ActionEvent event) {
         try {
@@ -68,6 +77,9 @@ public class HelloController {
             //insere no BD
             estudanteDAO DAO = new estudanteDAO();
             DAO.inserir(estudante);
+            //atualiza tabela estudantes
+            updatetable();
+            limpaInserts();
 
         }catch (NumberFormatException e){
             exibirerro("Numero errado!", "Digite um numero válido");
@@ -75,6 +87,22 @@ public class HelloController {
             exibirerro("Erro", "Ocorreu um erro ao salvar: " + e.getMessage());
         }
     }
+
+
+    //FUNÇÃO DE INICIALIZAÇÃO
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tc_id.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("id"));
+        tc_idade.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("idade"));
+        tc_nome.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("nome"));
+        tc_sexo.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("sexo"));
+
+        //atualiza tabela estudantes
+        updatetable();
+        limpaInserts();
+    }
+
+    //FUNÇÕES JAVA
     public void exibirerro(String titulo, String mensagem){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titulo);
@@ -82,4 +110,18 @@ public class HelloController {
         alert.setContentText(mensagem);
         alert.showAndWait();
     }
+
+    public  void updatetable(){
+        estudanteDAO DAO = new estudanteDAO();
+        ObservableList <Estudante> estudantes = FXCollections.observableArrayList(DAO.buscarTodos());
+
+        tv_estudante.setItems(estudantes);
+    }
+
+    public void limpaInserts(){
+        tf_idade.clear();
+        tf_nome.clear();
+        Sexo.selectToggle(null);
+    }
 }
+
